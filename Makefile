@@ -223,7 +223,7 @@ generate-metrics-doc: buildenv
 $(BUILD_DIR)/%/chaintool: Makefile
 	@echo "Installing chaintool"
 	@mkdir -p $(@D)
-	curl -fL $(CHAINTOOL_URL) > $@
+	cp build/chaintool $@
 	chmod +x $@
 
 # We (re)build a package within a docker context but persist the $GOPATH/pkg
@@ -252,6 +252,7 @@ $(BUILD_DIR)/docker/gotools: gotools.mk
 	@mkdir -p $@/bin $@/obj
 	@$(DRUN) \
 		-v $(abspath $@):/opt/gotools \
+		-v $(abspath build/bin):/opt/gotools/tmp \
 		-w /opt/gopath/src/$(PKGNAME) \
 		$(BASE_DOCKER_NS)/fabric-baseimage:$(BASE_DOCKER_TAG) \
 		make -f gotools.mk GOTOOLS_BINDIR=/opt/gotools/bin GOTOOLS_GOPATH=/opt/gotools/obj
