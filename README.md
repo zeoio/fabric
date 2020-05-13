@@ -74,6 +74,8 @@ information on getting started using and developing with the fabric, SDK and cha
 
 It's recommended for first-time users to begin by going through the Getting Started section of the documentation in order to gain familiarity with the Hyperledger Fabric components and the basic transaction flow.
 
+[Fabric development documentation](docs/fabric-no-network.md) about removing the connect to the network to build a docker image.
+
 ## Contributing
 
 We welcome contributions to the Hyperledger Fabric project in many forms.
